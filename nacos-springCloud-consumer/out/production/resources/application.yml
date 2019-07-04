@@ -1,0 +1,33 @@
+server:
+  port: 8089
+spring:
+  main:
+    allow-bean-definition-overriding: true
+  application:
+    name: nacos-springCloud-consumer
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 127.0.0.1:8848
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+ribbon:
+  ReadTimeout: 5000
+  ConnectionTimeout: 5000
+hystrix:
+  shareSecurityContext: true
+  command:
+    default:
+      circuitBreaker:
+        sleepWindowInMilliseconds: 10000
+        forceClosed: true
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 10000
+feign:
+  hystrix:
+    enabled: true
