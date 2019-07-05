@@ -1,5 +1,5 @@
 server:
-  port: 8188
+  port: 8088
 spring:
   application:
     name: nacos-springCloud-producer

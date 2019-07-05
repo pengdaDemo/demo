@@ -1,0 +1,25 @@
+server:
+  port: 8085
+spring:
+  application:
+    name: nacos-zuul
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 127.0.0.1:8848
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+#自定义配置
+zuul:
+  routes:
+    #服务
+    nacos-springCloud-producer:
+      #context-path配置：如http://localhost:8085/nacos-springCloud-producer/api/info?username=bright
+      path: /nacos-springCloud-producer/**
+      #context-path对应的实际提供方的服务地址
+ribbon:
+  ReadTimeout: 5000
+  ConnectionTimeout: 5000
